@@ -2,45 +2,43 @@ package com.bridgelabz.addressbookapps.Model;
 
 
 import com.bridgelabz.addressbookapps.DTO.AddressBookDTO;
+import lombok.Data;
 
 
-public  class AddressBookData {
+
+public @Data class AddressBookData {
+    @javax.persistence.Id
     private int Id ;
-    private String name ;
+    private String fname ;
+    private String lname;
+
     private long phonenumber;
+    private String address;
+    private long zipcode;
+    private String state;
+    private String city;
+    private String email;
+    private Long id;
 
 
     public AddressBookData(int Id, AddressBookDTO addressBookDTO)
     {
         this.Id = Id;
 
-        this.name = addressBookDTO.getName() ;
+        this.fname = addressBookDTO.getFname() ;
+        this.lname = addressBookDTO.getLname();
+        this.phonenumber = addressBookDTO.getPhonenumber();
+        this.address =  addressBookDTO.getAddress();
+        this.zipcode = addressBookDTO.getZipcode();
+        this.state = addressBookDTO.getState();
+        this.city = addressBookDTO.getCity();
+        this.email = addressBookDTO.getEmail();
 
-        this.phonenumber=addressBookDTO.getPhonenumber();
 
     }
 
-    public int getId() {
-        return Id;
-    }
 
-    public void setId(int id) {
-        Id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public long getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(long phonenumber) {
-        this.phonenumber = phonenumber;
-    }
 }
