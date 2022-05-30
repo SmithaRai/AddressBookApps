@@ -7,6 +7,8 @@ import com.bridgelabz.addressbookapps.Model.AddressBookData;
 import java.util.List;
 
 public interface IAddressBookService {
+    List<AddressBookData> sortAddressBookByCity();
+    List<AddressBookData> sortAddressBookByState();
 
     public List<AddressBookData> getAddressBookData();
 
@@ -14,7 +16,10 @@ public interface IAddressBookService {
 
     public AddressBookData addAddressBookData(AddressBookDTO addressBookDTO);
 
-    public AddressBookData updateAddressBookData(int Id,AddressBookDTO addressBookDTO);
+    public AddressBookData updateAddressBookData(int Id ,AddressBookDTO addressBookDTO);
 
     public void deleteAddressBookData(int Id);
+
+
+
 }

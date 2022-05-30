@@ -13,20 +13,19 @@ public @Data class AddressBookDTO {
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$" , message = "LastName Invalid")
     @NotEmpty(message = "Last name cannot be null")
     private String lname;
-    @Pattern(regexp = "^[9][1]{0,1}\\s[0-9]{10}", message = "Phonenumber Invalid")
-    @NotEmpty(message = "phonenumber cannot be empty")
-    private long phonenumber;
+    @Pattern(regexp = "^[9][1]{1}[0-9]{10}$", message = "Phonenumber Invalid")
+    private String phonenumber;
+    @Pattern(regexp = "^[a-zA-Z\\s0-9]+$" , message = "address Invalid")
     private String address;
-    @Pattern(regexp = "^[0-9]{5}(?:-[0-9]{4})?$" ,message = "zipcode Invalid")
-    @NotEmpty(message = "zipcode field cannot be empty")
-    private long zipcode;
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]+$" , message = " Invalid")
+    @Pattern(regexp = "^[0-9]{5}$" ,message = "zipcode Invalid")
+    private String zipcode;
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]+$" , message = "state Invalid")
     private String state;
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]+$" , message = " Invalid")
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]+$" , message = "city Invalid")
     private String city;
     @Pattern(regexp = "^[a-zA-Z0-9_-]+([.a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+[.a-zA-Z0-9_-]+([.a-zA-Z0-9_-]+)*$", message = "Email Invalid")
     private String email;
-    public AddressBookDTO(String fname ,String lname, long phonenumber ,String address ,long zipcode , String state , String city , String email)
+    public AddressBookDTO(String fname ,String lname, String phonenumber ,String address ,String zipcode , String state , String city , String email)
     {
         this.fname = fname;
         this.lname = lname;
@@ -39,20 +38,4 @@ public @Data class AddressBookDTO {
     }
 
 
-
-
-
-    @Override
-    public String toString() {
-        return "AddressBookDTO{" +
-                "fname='" + fname + '\'' +
-                ", lname='" + lname + '\'' +
-                ", phonenumber=" + phonenumber +
-                ", address='" + address + '\'' +
-                ", zipcode=" + zipcode +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

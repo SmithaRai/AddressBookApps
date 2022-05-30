@@ -19,6 +19,23 @@ public class AddressBookController {
 
     @Autowired
     IAddressBookService addressBookService;
+
+    @GetMapping("/sortByState")
+    public ResponseEntity<ResponseDTO> sortAddressBookByState(){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressBookService.sortAddressBookByState();
+        ResponseDTO responseDTO = new ResponseDTO("sort AddressBook By State Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/sortByCity")
+    public ResponseEntity<ResponseDTO> sortAddressBookByCity(){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressBookService.sortAddressBookByCity();
+        ResponseDTO responseDTO = new ResponseDTO("sort AddressBook By City Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
     @GetMapping("/get/")
     public ResponseEntity<ResponseDTO> getAddressBookData(){
        List<AddressBookData> addressBookDataList = null ;
@@ -47,7 +64,7 @@ public class AddressBookController {
     @PutMapping("/update/{id}")
     public ResponseEntity<ResponseDTO> updateAddressBookData(@PathVariable("id")int id ,@Valid @RequestBody AddressBookDTO addressBookDTO) {
         AddressBookData addressBookData = null;
-        addressBookData = addressBookService.addAddressBookData(addressBookDTO);
+        addressBookData = addressBookService.updateAddressBookData(id ,addressBookDTO);
         ResponseDTO respDTO = new ResponseDTO("Updated Employee Payroll Data Successful",addressBookData);
         return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.OK);
     }
